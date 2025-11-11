@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Design Portfolio - Designing for Social Impact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --charcoal: #1f2937;
+            --deep-teal: #0d9488;
+            --text-gray: #6b7280;
+            --edu-blue: #1e40af;
+            --edu-blue-light: #eff6ff;
+            --civic-green: #15803d;
+            --civic-green-light: #f0fdf4;
+            --nonprofit-purple: #7c3aed;
+            --nonprofit-purple-light: #f5f3ff;
+            --access-orange: #ea580c;
+            --access-orange-light: #fff7ed;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--white);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: var(--white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease-in-out;
+        }
+
+        nav a:hover {
+            color: var(--deep-teal);
+        }
+
+        nav a.active {
+            border-bottom-color: var(--deep-teal);
+            color: var(--deep-teal);
+        }
+
+        .cta-button {
+            height: 48px;
+            padding: 0 32px;
+            background: var(--deep-teal);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+
+        main {
+            margin-top: 72px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .hero {
+            min-height: calc(100vh - 72px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            max-width: 900px;
+        }
+
+        .hero h1 .accent {
+            color: var(--deep-teal);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--charcoal);
+            border-radius: 12px;
+            opacity: 0.3;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            animation: scroll-down 2s infinite;
+        }
+
+        @keyframes scroll-down {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+                opacity: 0.3;
+            }
+        }
+
+        .about-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 400px;
+            height: 400px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--deep-teal) 0%, #0f766e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+
+        .about-text p {
+            margin-bottom: 32px;
+        }
+
+        .about-text strong {
+            color: var(--deep-teal);
+            font-weight: 600;
+        }
+
+        .sector-badges {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            gap: 16px;
+            margin-top: 40px;
+            justify-content: start;
+        }
+
+        .sector-badge {
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .sector-badge.education {
+            background: var(--edu-blue-light);
+            color: var(--edu-blue);
+        }
+
+        .sector-badge.civic {
+            background: var(--civic-green-light);
+            color: var(--civic-green);
+        }
+
+        .sector-badge.nonprofit {
+            background: var(--nonprofit-purple-light);
+            color: var(--nonprofit-purple);
+        }
+
+        .sector-badge.accessibility {
+            background: var(--access-orange-light);
+            color: var(--access-orange);
+        }
+
+        .filter-section {
+            padding: 120px 0 60px;
+        }
+
+        .filter-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .filter-tag {
+            height: 36px;
+            padding: 0 20px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .filter-tag:hover {
+            transform: scale(1.02);
+            background: #e5e7eb;
+        }
+
+        .filter-tag.active {
+            background: var(--deep-teal);
+            color: var(--white);
+        }
+
+        .case-studies {
+            padding: 60px 0 120px;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .case-hero {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e5e7eb 100%);
+        }
+
+        .case-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .case-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+        }
+
+        .sector-indicator {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .sector-indicator.education {
+            background: var(--edu-blue);
+            color: var(--white);
+        }
+
+        .sector-indicator.civic {
+            background: var(--civic-green);
+            color: var(--white);
+        }
+
+        .sector-indicator.nonprofit {
+            background: var(--nonprofit-purple);
+            color: var(--white);
+        }
+
+        .sector-indicator.accessibility {
+            background: var(--access-orange);
+            color: var(--white);
+        }
+
+        .case-content {
+            padding: 32px;
+        }
+
+        .case-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .case-context {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .case-challenge {
+            font-size: 15px;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .case-challenge strong {
+            font-weight: 600;
+        }
+
+        .case-outcome {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep-teal);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .case-outcome strong {
+            font-weight: 700;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .case-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-gray);
+            background: var(--light-gray);
+            padding: 6px 12px;
+            border-radius: 12px;
+        }
+
+        footer {
+            background: var(--light-gray);
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .footer-section a:hover {
+            color: var(--deep-teal);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        @media (max-width: 1024px) {
+            header {
+                padding: 0 40px;
+            }
+
+            .container {
+                padding: 0 40px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sector-badges {
+                grid-template-columns: repeat(2, auto);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 24px;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-section {
+                padding: 80px 0;
+            }
+
+            .filter-section {
+                padding: 80px 0 40px;
+            }
+
+            .case-studies {
+                padding: 40px 0 80px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .sector-badges {
+                grid-template-columns: repeat(2, auto);
+            }
+        }
+
+        .case-card.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Portfolio</div>
+        <button class="cta-button">Let's Connect</button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Designing for Impact: <span class="accent">Education, Community &amp; Social Good</span></h1>
+                <p>
+                    Bringing systematic problem-solving and inclusive design thinking to organizations that serve students,
+                    communities, and underserved populations. Proven experience delivering measurable social impact through
+                    thoughtful product design.
+                </p>
+            </div>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://storage.googleapis.com/forge-sites/6df5859b8a961bc51a9d41dbe1b08d6e4eec326f5d973628a2095a0364f8bff4.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215700Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=2d5ea14f20d8f9f2880708c5e297298befe33a36f81d7563bc98f26add4b1680e711ebaefded792c9b1ebecdc8c1f633906bb3510a7185affffb0e4cc17aff2ffefdfe9970b0555c5d1e6c9d30c5aa2529fcc81628346ff6d45bc28be436f9e8fa416fee46660a0f0ec7d2ea94ae4e6c5dd110a34ba26bf5754d5eb04f5b1c953d01aac1bde2e061051ba682273e5531e76d47b05a0b890c8063f007880f02ad858f88fd79772f8ebf8becf3585800cb7876a2f1cc6eada1f5fcdfefc708048075ed4a91105c1b77b65129de71ee5e7e4f4140b004651b79d920ed8e21b6b53eb7e9bdccadd69fbc300b167f11036ae6eb157f89d0f309648f8109fce01cd246" alt="Product designer in a community center or educational setting, professional portrait with collaborative workspace in background" />
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            I'm a product designer who specializes in mission-driven organizations—from school districts and
+                            universities to civic tech initiatives and nonprofit services. My approach combines
+                            <strong>rigorous research methodologies</strong> with <strong>inclusive design principles</strong> to
+                            deliver solutions that don't just work well technically, but create
+                            <strong>measurable social impact</strong>.
+                        </p>
+                        <p>
+                            Whether I'm designing learning platforms for EdTech startups (Duolingo, Khan Academy, Course Hero),
+                            improving government services for City of Orlando and Orange County, building civic tech tools with Code
+                            for America, or ensuring digital accessibility for organizations serving underserved communities, I
+                            bring <strong>systematic thinking and demonstrably better outcomes</strong>. I don't just design interfaces;
+                            I architect experiences that make education more accessible, government more responsive, and nonprofit
+                            services more effective.
+                        </p>
+                        <div class="sector-badges">
+                            <span class="sector-badge education">Education</span>
+                            <span class="sector-badge civic">Civic/Government</span>
+                            <span class="sector-badge nonprofit">Nonprofit</span>
+                            <span class="sector-badge accessibility">Accessibility</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="container">
+                <h2>Filter by Sector &amp; Capability</h2>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">#All</button>
+                    <button class="filter-tag" data-filter="education">#Education</button>
+                    <button class="filter-tag" data-filter="civic">#CivicTech</button>
+                    <button class="filter-tag" data-filter="nonprofit">#Nonprofit</button>
+                    <button class="filter-tag" data-filter="accessibility">#Accessibility</button>
+                    <button class="filter-tag" data-filter="inclusive">#InclusiveDesign</button>
+                    <button class="filter-tag" data-filter="impact">#SocialImpact</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-studies">
+            <div class="container">
+                <div class="case-grid">
+                    <a href="#case-edtech" class="case-card" data-tags="education inclusive impact">
+                        <div class="case-hero">
+                            <span class="sector-indicator education">Education</span>
+                            <img src="https://storage.googleapis.com/forge-sites/dbc7047c195088391bc9c457c46fb5d36eaf7089b61d422831b370cbc3c3b892.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215701Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=4b66820d6739c290343072cf87433c56da025f16913b686594670323bac24a45df1a9e7a1c7967e40eb4a1860a686f94bdd0c4b14c532526c9e86e07b7d6f745082b182d56abb762e06e8f7a1da9fe1356379a3098f37a8e24507e7c0f052041d4085322262fe057a351190846325a7c24d723a3102ba03072ab4bfad7fdc7cc6bbb2c345c68be40e51db5afcc00996d06c09b5f5d98f335943a55151e6014d765463ecaa7feda5eedf2110e7e7359feb65935c0e58e860bdb32864cc410fb20f88a24fe208f4c17f6c45ce84a9bbdf469a1e11d65d564c4dfe5b837d8f378c01a1d4621e7e5841b02a78e2072e8b351b98eba86acc2eabd769286cede6ddc88" alt="Educational technology platform interface showing interactive learning modules, progress tracking, and accessible design for diverse learners" />
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">EdTech Learning Platform Redesign</h3>
+                            <p class="case-context">University Partnership • K-12 EdTech Startup • 2023</p>
+                            <p class="case-challenge"><strong>The Challenge:</strong> Complex learning interface causing 42% student drop-off, accessibility barriers for students with disabilities.</p>
+                            <p class="case-outcome"><strong>Student engagement +64%, WCAG 2.1 AA compliance achieved</strong></p>
+                            <div class="case-tags">
+                                <span class="case-tag">#Education</span>
+                                <span class="case-tag">#InclusiveDesign</span>
+                                <span class="case-tag">#Accessibility</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#case-civic" class="case-card" data-tags="civic inclusive impact">
+                        <div class="case-hero">
+                            <span class="sector-indicator civic">Civic/Government</span>
+                            <img src="https://storage.googleapis.com/forge-sites/6eaa86af2317262dc3afe989bbabde99618a282571c2f5f9e669d84410ba8fa5.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215701Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=69f3ddc3daa8155885369952d5b748236e0e6de152d474a3b8fe835e90f528471a0edee9af11e241697aa1a0c62dc52419c2b9491d9901cad7e69171ed6444cbfa9dbb2c9d91fb65a90aa87539f3b5b33c50683fd071361b145b7b208671693d4a898b234bc0b28266994627bfbe4cc2d422fb5c68bc369215c14b9cecdeba89fcb4bfe8702bd9653d4fed624ea5fd61b13c84989007cea35e08df190a713daf1888df3c586106eb24e7aabf6ac85c4edbae8193aec3148c4f68fb26cb23cb8ca248027653a36bdfa31c2e44abbd63e494b18741178d061b8c3c40eddb663c79c2d627eb84c4697ad6049477d4523ec5ccd60040463135c69f7eda1798027568" alt="Government services portal showing simplified permit application process, multilingual support, and mobile-responsive design for community access" />
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">City Services Portal Transformation</h3>
+                            <p class="case-context">Municipal Government • Code for America • 2023</p>
+                            <p class="case-challenge"><strong>The Challenge:</strong> Residents couldn't navigate permit applications, 67% abandonment rate, language barriers excluding Spanish-speaking communities.</p>
+                            <p class="case-outcome"><strong>Application completion +58%, multilingual support serving 12K additional residents</strong></p>
+                            <div class="case-tags">
+                                <span class="case-tag">#CivicTech</span>
+                                <span class="case-tag">#InclusiveDesign</span>
+                                <span class="case-tag">#PublicSector</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#case-nonprofit" class="case-card" data-tags="nonprofit impact accessibility">
+                        <div class="case-hero">
+                            <span class="sector-indicator nonprofit">Nonprofit</span>
+                            <img src="https://storage.googleapis.com/forge-sites/558b7c6a93c260fba40e1b53c4b98dcf54160557c5aed123299667dfde06402f.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215701Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=a81b68c960c12bfbdb67aa489a8c470433a0a14b2e4e63600efa649827b19f7bf484bb76e1dccf5b791160e722c1e4f7a14999ae8e643dcc9cdf5eb3dbdc8ccc7622c055f3ecd654ab6eff4d2eaf815050d8d3104633752e8443343674485d9a39c94b5f886c81c96455468ab9b951877561984403214c18c51c180e1555068b62d1bbc1661c31167f3fc60a150e07e4085375ba1062b07fb1adec2692a3767c589def1c3cf6c75c3969fdfe983d6a50f1088647eaf6ee85b97582a4e93c08cd4568777d586ac8502ff8f6437e777ca540e8b7df2d6c574f57844e2ff172de4d0086872d6274ac28c3731e9e973321d6d7578caac8c200945f7d79d4e9edf849" alt="Nonprofit food bank volunteer coordination platform showing scheduling interface, resource tracking, and community impact dashboard" />
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">Food Bank Volunteer Platform</h3>
+                            <p class="case-context">Second Harvest Food Bank • Nonprofit Technology • 2022</p>
+                            <p class="case-challenge"><strong>The Challenge:</strong> Manual volunteer coordination limiting capacity, serving 23% fewer families than demand required.</p>
+                            <p class="case-outcome"><strong>Volunteer efficiency +71%, serving 8,400 additional families monthly</strong></p>
+                            <div class="case-tags">
+                                <span class="case-tag">#Nonprofit</span>
+                                <span class="case-tag">#SocialImpact</span>
+                                <span class="case-tag">#CommunityServices</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#case-accessibility" class="case-card" data-tags="accessibility education inclusive">
+                        <div class="case-hero">
+                            <span class="sector-indicator accessibility">Accessibility</span>
+                            <img src="https://storage.googleapis.com/forge-sites/681cc67bc5f03ddae1884087c9a80e8db4be5046ce40a947f71214d26f187453.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215701Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=400ea9cc7e56741832ef3a482344667d53fe78b674f6a0264d83e944c867d73fa062d704890c98a4f59c40f7e5fc62b86137b47f276a65c830c223a5535b5ac8940d19ad015d2cc12a2292b9fce8d7d8a23540a39d54f03f1bb43f82946c13777424f297fb4551aba840765b71179ffcd4bb68a0c36aa690fd3acef3322e1e8c0d669ebe762644d540f9cffc9019efe7dd92037fc8cbc80f095e661d5ae34e195e0ae61b9566e33a81a17e2cfa0474fecaa9ca543fc643d5b921f7e0b64de5dca3a4459746c6f03607ad746f2b3ec11cb3e09a987e49808742cae17c5b6f7f69afd46362ca6673e430d6dd84b52806d222bdce4e8a5c01b4a207f1d354dad0c0" alt="University course management system with robust accessibility features including screen reader optimization, keyboard navigation, and alternative content formats" />
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">University Course System Accessibility Overhaul</h3>
+                            <p class="case-context">UCF Digital Learning • Higher Education • 2023</p>
+                            <p class="case-challenge"><strong>The Challenge:</strong> Course platform failing WCAG standards, excluding students with visual, motor, and cognitive disabilities from equal access.</p>
+                            <p class="case-outcome"><strong>Full WCAG 2.1 AA compliance, assistive tech compatibility 100%, student accessibility complaints -89%</strong></p>
+                            <div class="case-tags">
+                                <span class="case-tag">#Accessibility</span>
+                                <span class="case-tag">#Education</span>
+                                <span class="case-tag">#InclusiveDesign</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#case-k12" class="case-card" data-tags="education impact inclusive">
+                        <div class="case-hero">
+                            <span class="sector-indicator education">Education</span>
+                            <img src="https://storage.googleapis.com/forge-sites/b40b1b3e326ede743c3f9712a60af3644a977f3446b8d061a7a99b25b7507a57.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215701Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=35f8fd99816d532adbf5f555bf65431eb8f234f9b5689c5b41d1f8c9ec9d744698645a1fc1ea2f2ba373cf67beab48b49c28e9843dda2d5e5076d74831ffd70e50cab5f43fa0e8e7b5f421b8fba82b8a584429f4c4fb1b3828c3010629a5bb2b8d58d5158f93adc561a8aabcaab34ec399b89c99efcb8a9eb43f2b60ce72f167ceffc23559efc1d09a32b2c0ebb7cdab71ff488f368ba504c53084b025fef66fefa0fc34bf0ab9561a701702389357c83ea42018fbb44a59bd73b4acdff5e6aba4fad7d21d14d62ccf856acddba561cba8d8f08a76193b5609e73a6364079f77ba9e0001aa592f9213e8bd4ff3b68d1f3780b95bc5e2faa28ea6d4d585d279e2" alt="K-12 parent-teacher communication app showing grade tracking, assignment notifications, and multilingual messaging interface" />
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">K-12 Parent Portal Redesign</h3>
+                            <p class="case-context">Orange County Public Schools • District Technology • 2022</p>
+                            <p class="case-challenge"><strong>The Challenge:</strong> Low parent engagement (31%), language barriers for multilingual families, mobile accessibility issues limiting working parents.</p>
+                            <p class="case-outcome"><strong>Parent engagement +53%, supporting 18 languages, mobile usage +127%</strong></p>
+                            <div class="case-tags">
+                                <span class="case-tag">#Education</span>
+                                <span class="case-tag">#PublicSector</span>
+                                <span class="case-tag">#InclusiveDesign</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#case-housing" class="case-card" data-tags="nonprofit civic impact">
+                        <div class="case-hero">
+                            <span class="sector-indicator nonprofit">Nonprofit</span>
+                            <img src="https://storage.googleapis.com/forge-sites/647b3121560b0eda2b77be862ba12eb2cc137cbf72a0c034b73e0215f180edae.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=164061697651-compute%40developer.gserviceaccount.com%2F20251111%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20251111T215701Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;response-access-control-allow-origin=https%3A%2F%2Fforge.moonchild.ai&amp;X-Goog-Signature=34b79ced02d9a646a25ccb53b47d734b983ba03fb62c257706025df21a72cb8346d32e6c120f60c8996fe023c4627ccd61e990d0624b587c2ac7528c676e21226dcf9f71f047c278730b02c9696f6896bdae7cedcc215ac04420d314c9467e8df0e5127c4e8871b46018c7fa63b88b19aed1ef54d763bd277a8cb93b5c5e890eab56c7dd185e51618da0412577b933e6285cd00703c92a33b7deb6c1d0a4069c171d26760cf512a42df94be81faa5aafa916930bc7443830822ffa95591c76b2421469cc4186f3d558fa5d86dee8c25cfa2378b37626e69c5ea53aabb0766776596713bb6050721c35318ea5280daa09ac8be942b6068ae2bf08950a86a8b38d" alt="Habitat for Humanity affordable housing application system showing simplified forms, document upload, and application status tracking" />
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">Affordable Housing Application System</h3>
+                            <p class="case-context">Habitat for Humanity • Nonprofit Services • 2023</p>
+                            <p class="case-challenge"><strong>The Challenge:</strong> Paper-based application process creating 8-12 week delays, excluding families without reliable internet access or digital literacy.</p>
+                            <p class="case-outcome"><strong>Processing time reduced to 3 weeks, hybrid digital/analog system serving 340 additional families annually</strong></p>
+                            <div class="case-tags">
+                                <span class="case-tag">#Nonprofit</span>
+                                <span class="case-tag">#SocialImpact</span>
+                                <span class="case-tag">#CommunityServices</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Case Studies</h3>
+                    <ul>
+                        <li><a href="#case-edtech">EdTech Learning Platform</a></li>
+                        <li><a href="#case-civic">City Services Portal</a></li>
+                        <li><a href="#case-nonprofit">Food Bank Volunteer Platform</a></li>
+                        <li><a href="#case-accessibility">University Accessibility Overhaul</a></li>
+                        <li><a href="#case-k12">K-12 Parent Portal</a></li>
+                        <li><a href="#case-housing">Housing Application System</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="mailto:hello@portfolio.com">hello@portfolio.com</a></li>
+                        <li><a href="https://linkedin.com">LinkedIn</a></li>
+                        <li><a href="https://dribbble.com">Dribbble</a></li>
+                        <li><a href="https://behance.net">Behance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sectors</h3>
+                    <ul>
+                        <li><a href="#education">Education &amp; EdTech</a></li>
+                        <li><a href="#civic">Civic Tech &amp; Government</a></li>
+                        <li><a href="#nonprofit">Nonprofit Services</a></li>
+                        <li><a href="#accessibility">Accessibility &amp; Inclusion</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2024 Portfolio. All rights reserved.</p>
+                <p class="footer-tagline">Designing for impact, equity, and accessibility</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const caseCards = document.querySelectorAll('.case-card');
+
+        filterTags.forEach((tag) => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach((t) => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const filter = tag.getAttribute('data-filter');
+
+                caseCards.forEach((card) => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const tags = card.getAttribute('data-tags');
+                        if (tags.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    });
+                }
+            });
+        });
+
+        document.querySelector('.cta-button').addEventListener('click', () => {
+            window.location.href = 'mailto:hello@portfolio.com';
+        });
+    </script>
+</body>
+</html>
