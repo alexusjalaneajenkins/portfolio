@@ -128,9 +128,17 @@
             min-height: calc(100vh - 72px);
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
             position: relative;
             padding: 120px 0;
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .hero h1 {
@@ -140,6 +148,8 @@
             line-height: 1.2;
             margin-bottom: 24px;
             max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero h1 .accent {
@@ -151,6 +161,8 @@
             color: var(--text-gray);
             line-height: 1.6;
             max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
             margin-bottom: 48px;
         }
 
@@ -634,7 +646,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">Jalanea</div>
+        <div class="logo">Portfolio</div>
         <button class="cta-button">Let's Connect</button>
     </header>
 
