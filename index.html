@@ -14,6 +14,13 @@
             box-sizing: border-box;
         }
 
+        img,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
         :root {
             --white: #ffffff;
             --light-gray: #f5f7fa;
@@ -54,7 +61,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 80px;
+            padding: 0 clamp(1.5rem, 5vw, 5rem);
         }
 
         .logo {
@@ -89,7 +96,7 @@
 
         .cta-button {
             height: 48px;
-            padding: 0 32px;
+            padding: 0 clamp(1.5rem, 4vw, 2rem);
             background: var(--deep-teal);
             color: var(--white);
             border: none;
@@ -113,7 +120,8 @@
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 80px;
+            width: 100%;
+            padding: 0 clamp(1.5rem, 5vw, 5rem);
         }
 
         .hero {
@@ -126,7 +134,7 @@
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: clamp(2.25rem, 5vw, 3.25rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.2;
@@ -139,7 +147,7 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: clamp(1.063rem, 2.5vw, 1.25rem);
             color: var(--text-gray);
             line-height: 1.6;
             max-width: 700px;
@@ -190,14 +198,14 @@
 
         .about-content {
             display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 80px;
+            grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+            gap: clamp(2.5rem, 7vw, 5rem);
             align-items: center;
         }
 
         .about-image {
-            width: 400px;
-            height: 400px;
+            width: min(100%, 400px);
+            aspect-ratio: 1 / 1;
             border-radius: 16px;
             background: linear-gradient(135deg, var(--deep-teal) 0%, #0f766e 100%);
             display: flex;
@@ -213,7 +221,7 @@
         }
 
         .about-text {
-            font-size: 18px;
+            font-size: clamp(1rem, 2.2vw, 1.125rem);
             line-height: 1.8;
             color: var(--charcoal);
         }
@@ -229,10 +237,9 @@
 
         .sector-badges {
             display: grid;
-            grid-template-columns: repeat(4, auto);
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 16px;
             margin-top: 40px;
-            justify-content: start;
         }
 
         .sector-badge {
@@ -241,6 +248,7 @@
             font-size: 13px;
             font-weight: 600;
             display: inline-block;
+            text-align: center;
         }
 
         .sector-badge.education {
@@ -277,6 +285,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
+            align-items: center;
         }
 
         .filter-tag {
@@ -290,6 +299,9 @@
             color: var(--charcoal);
             cursor: pointer;
             transition: all 0.2s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .filter-tag:hover {
@@ -384,23 +396,23 @@
         }
 
         .case-content {
-            padding: 32px;
+            padding: clamp(1.75rem, 4vw, 2.5rem);
         }
 
         .case-title {
-            font-size: 24px;
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
             font-weight: 700;
             margin-bottom: 8px;
         }
 
         .case-context {
-            font-size: 14px;
+            font-size: clamp(0.875rem, 2vw, 0.95rem);
             color: var(--text-gray);
             margin-bottom: 20px;
         }
 
         .case-challenge {
-            font-size: 15px;
+            font-size: clamp(0.9375rem, 2.2vw, 1rem);
             color: var(--charcoal);
             margin-bottom: 12px;
             line-height: 1.6;
@@ -411,7 +423,7 @@
         }
 
         .case-outcome {
-            font-size: 18px;
+            font-size: clamp(1.05rem, 2.6vw, 1.125rem);
             font-weight: 600;
             color: var(--deep-teal);
             margin-bottom: 20px;
@@ -444,8 +456,8 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(2.5rem, 6vw, 3.75rem);
             margin-bottom: 40px;
         }
 
@@ -494,57 +506,104 @@
         }
 
         @media (max-width: 1024px) {
-            header {
-                padding: 0 40px;
-            }
-
-            .container {
-                padding: 0 40px;
-            }
-
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-image {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
+                justify-items: center;
             }
 
             .case-grid {
                 grid-template-columns: 1fr;
+                gap: 32px;
             }
 
             .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .sector-badges {
-                grid-template-columns: repeat(2, auto);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
         @media (max-width: 768px) {
             header {
-                padding: 0 24px;
+                height: auto;
+                padding: 16px clamp(1.25rem, 5vw, 2rem);
+                flex-direction: column;
+                gap: 12px;
             }
 
-            .container {
-                padding: 0 24px;
+            main {
+                margin-top: 120px;
             }
 
-            nav {
-                display: none;
+            .cta-button {
+                width: 100%;
             }
 
-            .hero h1 {
-                font-size: 32px;
+            .hero {
+                min-height: auto;
+                padding: 96px 0 80px;
+            }
+
+            .about-section {
+                padding: 96px 0;
+            }
+
+            .filter-section {
+                padding: 96px 0 48px;
+            }
+
+            .case-studies {
+                padding: 48px 0 96px;
+            }
+
+            .filter-tags {
+                gap: 12px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                align-items: stretch;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
             }
 
             .hero p {
-                font-size: 18px;
+                margin-bottom: 32px;
+            }
+
+            .filter-tags {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-tag {
+                width: 100%;
+            }
+
+            .case-content {
+                padding: 24px;
+            }
+
+            .case-tags {
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding: 80px 0 60px;
             }
 
             .about-section {
@@ -559,19 +618,12 @@
                 padding: 40px 0 80px;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-
             .sector-badges {
-                grid-template-columns: repeat(2, auto);
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .footer-content {
+                gap: 32px;
             }
         }
 
@@ -582,7 +634,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">Portfolio</div>
+        <div class="logo">Jalanea</div>
         <button class="cta-button">Let's Connect</button>
     </header>
 
